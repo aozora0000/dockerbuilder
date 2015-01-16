@@ -17,8 +17,14 @@ class BuildCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        \Dockerbuilder\Model\Initialize::init();
-        $output->writeln('Hello World');
+        try {
+            $branches = \Dockerbuilder\Model\Initialize::getBranches();
+            print_r($branches);
+            $output->writeln(\Dockerbuilder\Library\Alert::Error("Hello World"));
+            $output->writeln('Hello World');
+        } catch(\Exception $e) {
+            $output->writeln(\Dockerbuilder\Library\Alert::Error($e->getMessage()));
+        }
     }
     /*
     git rev-parse --branches | while read BRANCH_HASH; do \

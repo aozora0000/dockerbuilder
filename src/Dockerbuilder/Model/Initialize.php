@@ -1,16 +1,18 @@
 <?php
 namespace Dockerbuilder\Model;
 
+use Dockerbuilder\Library\Git;
+use \Exception;
 class Initialize {
-    public static function init() {
-        if(!exec('git rev-parse --is-bare-repository 2>&1',$stdout)) {
-            throw new \Exception("Gitディレクトリではありません。");
-        }
-        if(!exec('git rev-parse --branches 2>&1',$stdout)) {
-            throw new \Exception("Gitブランチが存在しません。");
-        }
-        if(exec('git rev-parse --branches',$stdout)) {
-            print_r($stdout[2]);
+    public static function getBranches() {
+        if(Git::isGitDir() && Git::isExistBranches()) {
+            $branchArray = array();
+            foreach(Git::getBranchesHash() as $hash) {
+                $branchArray[] = Git::getBrancheNameFromHash($hash);
+            }
+            return $branchArray;
+        } else {
+            throw new Exception("Gitリポジトリ、又はブランチが存在しません。");
         }
     }
 }
