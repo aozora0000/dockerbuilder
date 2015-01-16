@@ -17,7 +17,7 @@ class BuildCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        exec('git rev-parse --branches');
+        \Dockerbuilder\Model\Initialize::init();
         $output->writeln('Hello World');
     }
     /*
