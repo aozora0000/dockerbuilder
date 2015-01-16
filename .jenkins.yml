@@ -1,0 +1,9 @@
+container: aozora0000/jenkins-ci-php:5.4
+steps:
+    - name: composerインストール
+      code: composer update --prefer-dist –no-progress
+    - name: PHPUNIT起動
+      code: phpunit
+notify:
+    - service: idobata
+      token: $IDOBATA_TOKEN

@@ -1,0 +1,10 @@
+#!/usr/bin/env php
+<?php
+require __DIR__.'/../vendor/autoload.php';
+use Dockerbuilder\Command;
+use Symfony\Component\Console\Application;
+
+$application = new Application('Dockerbuilder', '@package_version@');
+$application->add(new Command\BuildCommand());
+//$application->add(new Command\UpdateCommand());
+$application->run();
