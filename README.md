@@ -1,5 +1,8 @@
 # DockerBuilder
 
+
+![screenshot](https://raw.github.com/aozora0000/dockerbuilder/master/screen.gif)
+
 ## はじめに
 [jenkins-ci-php](https://github.com/aozora0000/jenkins-ci-php)の様にGitブランチ別でDockerfileをビルド・ビルドテストする為のスクリプトです。
 
