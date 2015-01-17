@@ -4,7 +4,7 @@ use Dockerbuilder\Library\Docker;
 class DockerTest extends PHPUnit_Framework_TestCase {
 
     public function testAvailable() {
-        $this->assertTrue(Docker::available());
+        $this->assertFalse(Docker::available());
     }
 
     public function testBuild() {
