@@ -1,5 +1,5 @@
 # DockerBuilder
-
+[![Build Status](https://travis-ci.org/aozora0000/dockerbuilder.svg?branch=master)](https://travis-ci.org/aozora0000/dockerbuilder)
 
 ![screenshot](https://raw.github.com/aozora0000/dockerbuilder/master/screen.gif)
 
