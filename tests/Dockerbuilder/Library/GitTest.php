@@ -16,7 +16,7 @@ class GitTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testGetBrancheNameFromHash() {
-        $hash = "f908dc3e6ea4a955d11ab0a6bc3f08667fcc4882";
+        $hash = "f908dc3e6ea4a955d11ab0a6bc3f08667fcc4882"; //first commit hash
         $this->assertEquals("master",Git::getBrancheNameFromHash($hash));
     }
 

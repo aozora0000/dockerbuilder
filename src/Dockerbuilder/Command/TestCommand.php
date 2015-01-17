@@ -12,13 +12,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class BuildCommand extends Command
+class TestCommand extends Command
 {
     protected function configure()
     {
         $this
-        ->setName('build')
-        ->setDescription('docker build each git branch')
+        ->setName('test')
+        ->setDescription('docker build test each git branch')
         ->addArgument(
             'image_name',
             InputArgument::OPTIONAL,
@@ -37,7 +37,7 @@ class BuildCommand extends Command
             $branches = \Dockerbuilder\Model\Initialize::getBranches();
             $image_name = $input->getArgument('image_name');
             $verbose = $input->getOption('verbose');
-            Build::build($output, $logger, $image_name, $branches, $verbose, "");
+            Build::build($output, $logger, $image_name, $branches, $verbose, "--force-rm=true --rm=true");
         } catch(\Exception $e) {
             $output->writeln(\Dockerbuilder\Library\Alert::Error($e->getMessage(),true));
         }
