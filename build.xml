@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="pofc" default="all">
+    <property name="basedir" value="./" />
+    <property name="output" value="${basedir}/build/logs" />
+
+    <!-- phing -->
+    <target name="phpunit" description="Run unit tests with PHPUnit">
+        <exec command="phpunit" />
+    </target>
+
+    <!-- phing -->
+    <target name="build" description="Build YamlParser">
+        <exec command="box build" />
+        <exec command="cp -f dockerbuilder.phar /usr/local/bin/dockerbuilder" />
+    </target>
+
+    <target name="all" depends="phpunit,build">
+    </target>
+
+</project>

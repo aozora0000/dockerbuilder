@@ -34,11 +34,17 @@ class TestCommand extends Command
             $log_dir = getenv('HOME');
             $logger->pushHandler(new StreamHandler("{$log_dir}/dockerbuilder.log", Logger::INFO));
 
-            $branches = \Dockerbuilder\Model\Initialize::getBranches();
             $image_name = $input->getArgument('image_name');
+            //$branch_option['include'] = $input->getArgument('include');
+            //$branch_option['exclude'] = $input->getArgument('exclude');
             $verbose = $input->getOption('verbose');
+            //var_dump($branch_option);exit;
+
+            //$branches = \Dockerbuilder\Model\Initialize::getBranches($branch_option);
+            $branches = \Dockerbuilder\Model\Initialize::getBranches();
             Build::build($output, $logger, $image_name, $branches, $verbose, "--force-rm=true --rm=true");
         } catch(\Exception $e) {
+            print_r($e);exit;
             $output->writeln(\Dockerbuilder\Library\Alert::Error($e->getMessage(),true));
         }
     }

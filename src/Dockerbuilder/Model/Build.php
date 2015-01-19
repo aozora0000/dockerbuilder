@@ -6,6 +6,7 @@ use \Dockerbuilder\Library\Alert;
 use \Dockerbuilder\Library\AlertVerborse;
 use \Dockerbuilder\Library\Docker;
 use \Dockerbuilder\Library\Git;
+use \Dockerbuilder\Library\ProcLoop;
 use \Symfony\Component\Console\Output\OutputInterface;
 
 class Build {

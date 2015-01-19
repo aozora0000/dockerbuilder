@@ -28,11 +28,9 @@ class Git {
         return trim(str_replace("*","",$gitbranche[0]));
     }
 
-    public static function getBrancheName() {
-        exec("git branch 2>&1",$gitbranche);
-        return array_map(function($branch) {
-            return trim(str_replace("*","",$branch));
-        },$gitbranche);
+    public static function getBrancheName($option) {
+        exec("git branch 2>&1",$branches);
+        return self::trimFilter($branches);
     }
 
     public static function changeBranch($branch) {
@@ -42,5 +40,23 @@ class Git {
         } else {
             return false;
         }
+    }
+
+    public static function trimFilter($branches) {
+        return array_map(function($branch) {
+            return trim(str_replace("*","",$branch));
+        },$branches);
+    }
+
+    public static function branchFilter($branches,$include,$exclude) {
+        var_dump($branches,$include,$exclude);
+        $branches = array_filter($branches, function($branch) use ($include) {
+            return ($include) ? in_array($branch,$include) : true;
+        });
+        $branches = array_filter($branches, function($branch) use ($exclude) {
+            return ($exclude) ? true : !in_array($branch,$exclude);
+        });
+        var_dump($branches);exit;
+        return $branches;
     }
 }

@@ -2,7 +2,8 @@
     "require": {
         "symfony/console": "~2.3",
         "devster/ubench": "1.1.*-dev",
-        "monolog/monolog": "@stable"
+        "monolog/monolog": "@stable",
+        "kriswallsmith/spork": "dev-master",
     },
     "autoload": {
         "psr-0": {
