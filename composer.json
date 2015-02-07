@@ -4,6 +4,7 @@
         "devster/ubench": "1.1.*-dev",
         "monolog/monolog": "@stable",
         "kriswallsmith/spork": "dev-master",
+        "facebook/xhprof": "dev-master"
     },
     "autoload": {
         "psr-0": {
