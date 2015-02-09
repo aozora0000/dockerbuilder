@@ -1,9 +1,13 @@
 container: aozora0000/jenkins-ci-php:5.4
 steps:
+    - name: boxインストール
+      code: curl -LSs https://box-project.github.io/box2/installer.php | php
     - name: composerインストール
-      code: composer update --prefer-dist -–no-progress
+      code: composer self-update && composer install
     - name: PHPUNIT起動
       code: phpunit
+    - name: ビルドテスト
+      code: php box.phar build
 notify:
     - service: idobata
       token: $IDOBATA_TOKEN
