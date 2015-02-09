@@ -7,7 +7,7 @@ steps:
     - name: PHPUNIT起動
       code: phpunit
     - name: ビルドテスト
-      code: php box.phar build
+      code: php -d phar.readonly=Off box.phar build
 notify:
     - service: idobata
       token: $IDOBATA_TOKEN
