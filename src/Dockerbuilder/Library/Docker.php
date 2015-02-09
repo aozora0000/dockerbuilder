@@ -39,4 +39,12 @@ class Docker {
         return $console;
     }
 
+    public static function isLogin($home_dir) {
+        return is_file("{$home_dir}/.dockercfg");
+    }
+
+    public static function push($image_name, $tag_name) {
+        exec("docker push {$image_name}:{$tag_name} 2>&1",$returnArray,$exitcode);
+        return ($exitcode === 0);
+    }
 }

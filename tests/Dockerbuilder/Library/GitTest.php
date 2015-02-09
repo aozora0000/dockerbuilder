@@ -8,7 +8,7 @@ class GitTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testIsExistBranches() {
-        $this->assertTrue(Git::isExistBranches());
+        $this->assertInternalType("boolean",Git::isExistBranches());
     }
 
     public function testGetBranchesHash() {

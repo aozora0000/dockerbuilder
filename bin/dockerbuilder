@@ -6,5 +6,6 @@ use Symfony\Component\Console\Application;
 
 $application = new Application('Dockerbuilder', '@package_version@');
 $application->add(new Command\BuildCommand());
+$application->add(new Command\PushCommand());
 $application->add(new Command\TestCommand());
 $application->run();

@@ -11,7 +11,7 @@ use \Symfony\Component\Console\Output\OutputInterface;
 
 class Build {
 
-    public static function build(OutputInterface $output,Logger $logger, $image_name, $branches, $verbose = false, $option = "") {
+    public static function build(OutputInterface $output,Logger $logger, $image_name, $branches, $verbose = false, $option = "", $push = false) {
         $i = 1;
         $error = 0;
         $success = 0;
@@ -37,6 +37,14 @@ class Build {
                     $success++;
                     $output->$alertMethod($alert::BuildSuccess($image_name, $branch, $result));
                     $logger->info("build success {$image_name}:{$branch}");
+                    if($push) {
+                        $logger->info("dockerhub push {$image_name}:{$branch}");
+                        if(Docker::push($image_name, $branch)) {
+                            $output->writeln("push success {$image_name}:{$branch} to dockerhub");
+                        } else {
+                            $output->writeln("push failed! {$image_name}:{$branch} to dockerhub");
+                        }
+                    }
                 } else {
                     $error++;
                     $output->$alertMethod($alert::BuildFailed( $image_name, $branch, $result));
