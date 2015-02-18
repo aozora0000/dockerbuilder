@@ -6,6 +6,6 @@ PHAR_FILE="${APP_NAME}.phar"
 
 DONWLOAD_DIR=`pwd`
 DOWNLOAD_URL="${REPOS_URL}/${PHAR_FILE}"
-CURL_OPT="-sSL --progress-bar --retry=3 --retry-delay=5"
+CURL_OPT="-sSL --progress-bar"
 
 curl $CURL_OPT -o $DONWLOAD_DIR/$PHAR_FILE $DOWNLOAD_URL
